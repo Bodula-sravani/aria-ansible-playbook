@@ -1,0 +1,39 @@
+- name: Catalog driven post configuration
+  hosts: all
+  gather_facts: false
+
+  vars:
+    join_ad: false
+    configure_dns: false
+    install_monitoring: false
+    install_security: false
+
+  tasks:
+
+    - name: Print received variables
+      debug:
+        msg:
+          join_ad: "{{ join_ad }}"
+          configure_dns: "{{ configure_dns }}"
+          install_monitoring: "{{ install_monitoring }}"
+          install_security: "{{ install_security }}"
+
+    - name: Simulate AD
+      debug:
+        msg: "AD join executed"
+      when: join_ad
+
+    - name: Simulate DNS
+      debug:
+        msg: "DNS config executed"
+      when: configure_dns
+
+    - name: Simulate monitoring
+      debug:
+        msg: "Monitoring installed"
+      when: install_monitoring
+
+    - name: Simulate security
+      debug:
+        msg: "Security installed"
+      when: install_security
