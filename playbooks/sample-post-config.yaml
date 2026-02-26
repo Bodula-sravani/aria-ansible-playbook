@@ -48,11 +48,11 @@
 
     - name: Ensure state directory exists
       file:
-        path: /opt/postconfig
+        path: /tmp/postconfig
         state: directory
         mode: '0755'
 
     - name: Write state file
       copy:
         content: "{{ postconfig_state | to_nice_json }}"
-        dest: /opt/postconfig/state.json
+        dest: /tmp/postconfig/state.json
