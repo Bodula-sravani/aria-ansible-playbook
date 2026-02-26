@@ -37,7 +37,8 @@
       debug:
         msg: "Security installed"
       when: install_security
-        - name: Build state object
+      
+    - name: Build state object
       set_fact:
         postconfig_state:
           ad: "{{ 'completed' if join_ad else 'skipped' }}"
