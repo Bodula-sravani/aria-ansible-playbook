@@ -37,3 +37,21 @@
       debug:
         msg: "Security installed"
       when: install_security
+        - name: Build state object
+      set_fact:
+        postconfig_state:
+          ad: "{{ 'completed' if join_ad else 'skipped' }}"
+          dns: "{{ 'completed' if configure_dns else 'skipped' }}"
+          monitoring: "{{ 'completed' if install_monitoring else 'skipped' }}"
+          security: "{{ 'completed' if install_security else 'skipped' }}"
+
+    - name: Ensure state directory exists
+      file:
+        path: /opt/postconfig
+        state: directory
+        mode: '0755'
+
+    - name: Write state file
+      copy:
+        content: "{{ postconfig_state | to_nice_json }}"
+        dest: /opt/postconfig/state.json
