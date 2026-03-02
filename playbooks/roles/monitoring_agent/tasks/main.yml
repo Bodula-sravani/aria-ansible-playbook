@@ -17,7 +17,7 @@
 
 - name: Copy binary
   copy:
-    src: /tmp/node_exporter-1.10.2.darwin-amd64.tar.gz
+    src: /tmp/node_exporter-1.10.2.darwin-amd64/node_exporter
     dest: /usr/local/bin/node_exporter
     mode: '0755'
     remote_src: yes
