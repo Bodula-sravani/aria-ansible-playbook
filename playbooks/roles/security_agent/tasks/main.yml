@@ -1,11 +1,11 @@
-- name: Install OSQuery
+- name: Install auditd
   apt:
-    name: osquery
+    name: auditd
     state: present
     update_cache: yes
 
-- name: Enable and start osqueryd
+- name: Enable and start auditd
   systemd:
-    name: osqueryd
+    name: auditd
     enabled: yes
     state: started
