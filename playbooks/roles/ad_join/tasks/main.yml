@@ -1,0 +1,2 @@
+- debug:
+    msg: "Simulated AD join completed"

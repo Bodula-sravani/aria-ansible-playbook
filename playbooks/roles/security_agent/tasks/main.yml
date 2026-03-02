@@ -1,0 +1,11 @@
+- name: Install OSQuery
+  apt:
+    name: osquery
+    state: present
+    update_cache: yes
+
+- name: Enable and start osqueryd
+  systemd:
+    name: osqueryd
+    enabled: yes
+    state: started
